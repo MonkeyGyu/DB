@@ -2,7 +2,6 @@ package db
 
 import (
 	"bytes"
-	"fmt"
 	"log"
 	"sync"
 
@@ -16,12 +15,12 @@ type DB struct {
 var once sync.Once
 var db *DB
 
-func NewDB(dbname string) *DB {
+func NewDB() *DB {
 	once.Do(func() {
 		var err error
 		dbPointer := new(DB)
-		dbname = fmt.Sprintf("./database/%s", dbname)
-		dbPointer.db, err = badger.Open(badger.DefaultOptions(dbname))
+
+		dbPointer.db, err = badger.Open(badger.DefaultOptions("/database"))
 		if err != nil {
 			log.Fatal(err)
 		}
