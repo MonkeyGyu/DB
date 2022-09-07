@@ -15,6 +15,7 @@ type DB struct {
 var once sync.Once
 var db *DB
 
+// not string
 func NewDB() *DB {
 	once.Do(func() {
 		var err error
