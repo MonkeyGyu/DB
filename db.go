@@ -21,7 +21,7 @@ func NewDB() *DB {
 		var err error
 		dbPointer := new(DB)
 
-		dbPointer.db, err = badger.Open(badger.DefaultOptions("/database"))
+		dbPointer.db, err = badger.Open(badger.DefaultOptions("./database"))
 		if err != nil {
 			log.Fatal(err)
 		}
